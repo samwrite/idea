@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Login/Register";
+}
+<h1>Login</h1>
+<form action="loginprocess" method="post">
+    Email: <input type="text" name="LEmail"><br>
+    Password: <input type="password" name="Password"><br>
+    <input type="submit" value="Login">
+</form>
+@ViewBag.LoginError
+
+<h1>Register</h1>
+@model idea.Models.RegUser
+<form asp-controller="Home" asp-action="registerprocess" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name"/>
+    <span asp-validation-for="Name"></span><br>
+    
+    <label asp-for="Alias"></label>
+    <input asp-for="Alias"/>
+    <span asp-validation-for="Alias"></span><br>
+    
+    <label asp-for="Email"></label>
+    <input type="email" asp-for="Email"/>
+    <span asp-validation-for="Email"></span><br>
+    
+    <label asp-for="Password"></label>
+    <input asp-for="Password"/>
+    <span asp-validation-for="Password"></span><br>
+    
+    <label asp-for="ConfirmPassword"></label>
+    <input asp-for="ConfirmPassword"/>
+    <span asp-validation-for="ConfirmPassword"></span><br>
+    
+    <button type="submit">Register</button>
+</form>
+@ViewBag.ErrorRegister

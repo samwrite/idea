@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "View Idea";
+}
+<a href="/dashboard">Bright Ideas</a>
+<a href="/logout">Logout</a>
+
+<p><a href="/users/@ViewBag.Idea.Creator.UserId">@ViewBag.Idea.Creator.Alias</a> says: @ViewBag.Idea.content</p>
+
+<h3>People who like this post:</h3>
+<table>
+    <tr>
+        <th>Alias</th>
+        <th>Name</th>
+    </tr>
+@{
+    foreach (var l in @ViewBag.Idea.Likeds)
+    {
+        if (@l.User != @ViewBag.Idea.Creator)
+        {
+            <tr>
+                <td><a href="/users/@l.User.UserId">@l.User.Alias</a></td> 
+                <td>@l.User.Name</td>
+            </tr>
+        }
+    }
+}
+
+</table>
+

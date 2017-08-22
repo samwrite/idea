@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+Hi @ViewBag.User.Alias!
+<a href="/logout">Logout</a>
+<form action="newidea" method="POST">
+    <textarea name="newidea" cols="30" rows="10" placeholder="Post something witty here..."></textarea>
+    <input type="submit" value="Idea!">
+</form>
+@foreach (var i in @ViewBag.Ideas)
+{
+    <p><a href="/users/@i.Creator.UserId">@i.Creator.Alias</a> says: @i.content</p>
+    <p><a href="/like/@i.IdeaId">Like</a>
+    <a href="/idea/@i.IdeaId">@(i.Likeds.Count-1) people</a> like this</p>
+    @if(i.Creator == ViewBag.User)
+    {
+        <a href="delete/@i.IdeaId">delete</a>
+    }
+    <br>
+}

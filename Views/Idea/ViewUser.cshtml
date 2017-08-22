@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "View User";
+}
+<a href="/dashboard">Bright Ideas</a>
+<a href="/logout">Logout</a>
+<p>Name: @ViewBag.User.Name</p>
+<p>Alias: @ViewBag.User.Alias</p>
+<p>Email: @ViewBag.User.Email</p>
+<p>-------------------------------------------------------</p>
+<p>Total Number of Posts: @ViewBag.Posts</p>
+<p>Total Number of Likes: @(ViewBag.Likes-1)</p>
+
+
